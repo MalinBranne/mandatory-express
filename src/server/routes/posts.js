@@ -32,4 +32,16 @@ route.post("/posts", (req, res) => {
 
 /************************************************* */
 
+route.delete("/posts", (req, res) => {
+  const { id } = req.body;
+  store
+    .deletePost(id)
+    .then(deleted => res.json(deleted))
+    .catch(error => {
+      res.status(404).json({ error });
+    });
+});
+
+/************************************************* */
+
 module.exports = route;

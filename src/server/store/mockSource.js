@@ -75,6 +75,14 @@ class mockSource {
     return Promise.resolve(newPost);
     //return posts;
   }
+  deletePost(id) {
+    return new Promise((resolve, reject) => {
+      const index = posts.findIndex(item => item.id === id);
+      index !== -1
+        ? resolve(posts.splice(index, 1)[0])
+        : reject({ error: "Error - Could not delete post" });
+    });
+  }
 }
 
 module.exports = mockSource;

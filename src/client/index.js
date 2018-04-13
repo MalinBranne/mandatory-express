@@ -51,6 +51,19 @@ fetch("/api/posts/", {
     )
   );
 
+fetch("/api/posts", {
+  method: "DELETE",
+  body: JSON.stringify({
+    id: 1
+  }),
+  headers: {
+    "Content-type": "application/json; charset=UTF-8"
+  }
+})
+  .then(response => response.json())
+  .then(res => console.log("NEW: deleting a post", res))
+  .catch(e => console.log("Couldn't find post", e));
+
 // ...
 
 //** NOT SURE IF I NEED THE FETCH CALLS BELOW - ASSUME THE ONES ABOVE WILL FETCH FROM THESE APIS IF IN PRODUCTION MODE? **/

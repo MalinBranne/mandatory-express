@@ -65,6 +65,17 @@ class EdumentSource {
 
     */
   }
+
+  deletePost(id) {
+    return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+      method: "DELETE"
+    }).then(response => {
+      if (!response.ok) {
+        throw "Error - Could not delete post";
+      }
+      return { id }; // {hello} -> {hello: hello} { id: id }
+    });
+  }
 }
 
 module.exports = EdumentSource;

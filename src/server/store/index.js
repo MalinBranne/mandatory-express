@@ -27,6 +27,9 @@ class Store {
   addPost(postData) {
     return this.source.addPost(postData);
   }
+  deletePost(id) {
+    return this.source.deletePost(id);
+  }
 }
 
 let source;
