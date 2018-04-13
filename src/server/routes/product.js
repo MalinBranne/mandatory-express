@@ -4,12 +4,7 @@ const store = require("../store");
 
 const route = express.Router();
 
-// GET /api/products
-
 route.get("/products", (req, res) => {
-  // const products = store.getProducts();
-  // res.json({ products })
-
   store.getProducts().then(products => res.json({ products }));
 });
 

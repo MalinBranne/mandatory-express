@@ -10,9 +10,9 @@ class EdumentSource {
   getProduct(id) {
     return fetch(`http://demo.edument.se/api/products/${id}`)
       .then(response => {
-        // if (!response.ok) {
-        //     throw `Product with ID ${id} not found`;
-        // }
+        if (!response.ok) {
+          throw `Product with ID ${id} not found`;
+        }
 
         return response.json();
       })
@@ -20,8 +20,18 @@ class EdumentSource {
   }
 
   addProduct(productData) {
-    console.log(productData);
-    // throw Error("EdumentSource.addProduct not supported!");
+    throw Error("EdumentSource.addProduct not supported!");
+    /* // but otherwise we would've done something like:
+    return fetch(`http://demo.edument.se/api/products/`,{
+        method: 'post',
+        body: JSON.stringify(productData),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+    .then(response => response.json());
+
+    */
   }
 
   getPosts() {
@@ -29,42 +39,31 @@ class EdumentSource {
       .then(response => response.json())
       .then(products => products);
   }
-  // getPosts() {
-  //   fetch("https://jsonplaceholder.typicode.com/posts")
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       console.log(data, "hey hoooe");
-  //       return data;
-  //     });
-  // samma kod på annat sätt:
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log(data, "hey hoooe");
-  //     return data;
-  // }); // retunerar promise som fetchen skapar och uppfyller med data
-  // skriv return fetch för att vi returnerar resultatet av promise.
 
   getPost(id) {
     return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then(response => {
-        // if (!response.ok) {
-        //   throw "fel";
-        // }
+        if (!response.ok) {
+          throw "fel";
+        }
         return response.json();
       })
-      .then(post => post);
-
-    //   .then(response => response.json())
-    //   .then(products => {
-    //     const found = products.find(product => product.id === id);
-    //     found ? resolve(found) : reject();
-    //     console.log(product1, "hey id");
-    //   });
+      .then(post => console.log(post));
   }
 
-  addPost(newPost) {
-    console.log(newPost);
-    // throw Error("detta är just nu inte tillåtet *note to self*");
+  addProduct(productData) {
+    throw Error("EdumentSource.addProduct not supported!");
+    /* // but otherwise we would've done something like:
+    return fetch(`http://demo.edument.se/api/products/`,{
+        method: 'post',
+        body: JSON.stringify(productData),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+    .then(response => response.json());
+
+    */
   }
 }
 

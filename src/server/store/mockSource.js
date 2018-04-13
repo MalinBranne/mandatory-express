@@ -59,8 +59,6 @@ class mockSource {
       const found = posts.find(post => post.id === id);
       found ? resolve(found) : reject();
     });
-
-    // return
   }
 
   addPost({ category, name }) {
